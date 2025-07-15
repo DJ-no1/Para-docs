@@ -11,17 +11,20 @@ const AddCocumentBtn = ({ userId, email }: AddDocumentBtnProps) => {
         // createDocument({userId, email})
         try {
             const room = await createDocument({ userId, email })
-            if (room) { router.push(`/documents/${room.id}`) }
+            if (room) {
+                router.push(`/documents/${room.id}`)
+                router.refresh()
+            }
         } catch (error) {
             console.log(error)
         }
     }
     return (
-        <Button type="submit" onClick={addDocumentHandler} 
-        
+        <Button type="submit" onClick={addDocumentHandler}
+
 
             className="gradient-blue flex gap-1 shadow-md"
-            >
+        >
             <Image
                 src={'/assets/icons/add.svg'}
                 alt='add'
